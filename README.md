@@ -1,13 +1,17 @@
-# Landing Page Project
+# [Landing Page Project](https://rehmanz.github.io/udacity-landing-page/)
 
 ## Table of Contents
 
-* [Instructions](#instructions)
+* [Requirements](#requirements)
 
-## Instructions
+## Requirements
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+Build a mult-section landing page that dynamically adds content to the page using JavaScript. Demonstrate this will by 
 
-To get started, open `js/app.js` and start building out the app's functionality
+- dynamically building the navigational menu to develop understaing of the virtual DOM in Java Script.
+- differentiating sections actively being viewed. 
+- scrolling to the item when a user clicks on a navigation item rather than the default jump
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+Formulate an ideal workflow and a JavaScript structure. Consider tradeoffs for modifying HTML or CSS. Readability and performance also important factors in developing a scalable and robust application.
+
+
