@@ -47,14 +47,14 @@ function getSections() {
 
 /**
 * @description Add navigation element
-* @param {string} section map containing section id & value
-* @returns {fragment} List element fragment containg section 
+* @param {string} Section map containing section id & value
+* @returns {object} New list element node
 */
 function addSectionToNavBar(sectionMap) {
   const newListElement = document.createElement('li');
   const newAnchorElement = document.createElement('a');
 
-  // creates "<a class="menu__link" href="#sectionN">Section N</a>" structure
+  // creates "<a class="menu__link" href="#sectionN">Section N</a>"
   newAnchorElement.href = '#' + sectionMap['id'];
   newAnchorElement.innerText = sectionMap['value'];
   newAnchorElement.className = MENU_LINK_CLASS;
