@@ -3,7 +3,7 @@
 ## Table of Contents
 
 * [Requirements](#requirements)
-* [design](#design)
+* [Design](#design)
 
 ## Requirements
 
