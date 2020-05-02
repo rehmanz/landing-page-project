@@ -43,4 +43,33 @@ Find the `nav` element and add the nav bar as unsorted list items
 
 Performance considerations include
 - using `DocumentFragment` to rebuild the entire page for limiting the reflow and paint to one
-- using `document.querySelectorAll("section")` to fetch all sections in one call  
+- using `document.querySelectorAll("section")` to fetch all sections in one call
+
+
+## Active Section
+
+Approach to making a section active involves [detecting](https://knowledge.udacity.com/questions/85408#96950%20.) which section on the page is in viewport.
+
+Add `scroll` event call `makeActive()`
+```
+// Make sections active
+document.addEventListener("scroll", function() {
+  makeActive();
+});
+```
+
+The use `getBoundingClientReact()` to determine if section is closest to the top and activate it accordingly
+```
+// Add class 'active' to section when it is near top of viewport
+function makeActive() {
+  for (const section of sections) {
+    const box = section.getBoundingClientRect();
+    // You can play with the values in the "if" condition to further make it more accurate. 
+    if (box.top <= 150 && box.bottom >= 150) {
+      // Apply active state on the current section and the corresponding Nav link.
+    } else {
+      // Remove active state from other section and corresponding Nav link.
+    }
+  }
+}
+```
