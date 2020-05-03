@@ -18,6 +18,7 @@
  * 
 */
 const MENU_LINK_CLASS = 'menu__link';
+const SECTION_CLASS = 'section'
 const NAV_BAR_LIST_ID = 'navbar__list';
 const ACTIVE_SECTION_CLASS = 'your-active-class';
 
@@ -28,12 +29,12 @@ const ACTIVE_SECTION_CLASS = 'your-active-class';
  * 
 */
 /**
-* @description Gets all section IDs from page
+* @description    Gets all section IDs from page
 * @returns {list} List of section IDs
 */
 function getSections() {
   // TODO: 'section' should be a variable
-  const sections = document.querySelectorAll('section');
+  const sections = document.querySelectorAll(SECTION_CLASS);
   const sectionsList = [];
 
   for (let i = 0; i < sections.length; i++) {
@@ -47,8 +48,8 @@ function getSections() {
 }
 
 /**
-* @description Add navigation element
-* @param {string} Section map containing section id & value
+* @description      Add navigation element
+* @param {string}   Section map containing section id & value
 * @returns {object} New list element node
 */
 function addSectionToNavBar(sectionMap) {
@@ -137,7 +138,6 @@ function scrollToSection(navLinks) {
  * 
 */
 window.addEventListener('DOMContentLoaded', (event) => {
-  
   // Build menu
   const sections = getSections();
   buildTheNav(sections);
@@ -152,4 +152,3 @@ document.addEventListener("scroll", function() {
   const sections = getSections();
   makeActive(sections);
 });
-
