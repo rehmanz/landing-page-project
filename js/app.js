@@ -114,22 +114,42 @@ function makeActive(sections) {
 
 // Scroll to anchor ID using scrollTO event
 /**
+* @description Scroll to section upon a click
+* * @param {object} Navigation links
+*/
+function scrollToSection(navLinks) {
+  for (const nav of navLinks) {
+    nav.addEventListener('click', function (event) {
+      event.preventDefault();
+      sectionID = nav.getAttribute("href").slice(1);
+      console.log(sectionID)
+      document.getElementById(sectionID).scrollIntoView({
+          behavior: 'smooth'
+      });
+    });
+  }
+}
+
+
+/**
  * End Main Functions
  * Begin Events
  * 
 */
-const sections = getSections();
-
-// Build menu
 window.addEventListener('DOMContentLoaded', (event) => {
+  
+  // Build menu
+  const sections = getSections();
   buildTheNav(sections);
+  
+  // Scroll to section on link click
+  const navLinks = document.querySelectorAll('.' + MENU_LINK_CLASS);
+  scrollToSection(navLinks);
 }); 
-
-// Scroll to section on link click
-
 
 // Set sections as active
 document.addEventListener("scroll", function() {
+  const sections = getSections();
   makeActive(sections);
 });
 
