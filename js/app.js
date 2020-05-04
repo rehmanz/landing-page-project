@@ -39,8 +39,11 @@ function getSections() {
 
   for (let i = 0; i < sections.length; i++) {
     const sectionMap = new Map();
-    sectionMap['id'] = sections[i].id;
-    sectionMap['value'] = sections[i].querySelector('h2').innerText
+    sectionMap.set('id', sections[i].id);
+    sectionMap.set('value', sections[i].querySelector('h2').innerText)
+    // sectionMap.set(sections[i].id, sections[i].querySelector('h2').innerText)
+    // sectionMap['id'] = sections[i].id;
+    // sectionMap['value'] = sections[i].querySelector('h2').innerText
     sectionsList.push(sectionMap);
   }
 
@@ -57,8 +60,12 @@ function addSectionToNavBar(sectionMap) {
   const newAnchorElement = document.createElement('a');
 
   // creates "<a class="menu__link" href="#sectionN">Section N</a>"
-  newAnchorElement.href = '#' + sectionMap['id'];
-  newAnchorElement.innerText = sectionMap['value'];
+  // newAnchorElement.href = '#' + sectionMap['id'];
+  newAnchorElement.href = '#' + sectionMap.get('id')
+
+  // newAnchorElement.innerText = sectionMap['value'];
+  newAnchorElement.innerText = sectionMap.get('value');
+
   newAnchorElement.className = MENU_LINK_CLASS;
   
   newListElement.appendChild(newAnchorElement);
