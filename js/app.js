@@ -33,14 +33,13 @@ const ACTIVE_SECTION_CLASS = 'your-active-class';
 * @returns {list} List of section IDs
 */
 function getSections() {
-  // TODO: 'section' should be a variable
   const sections = document.querySelectorAll(SECTION_CLASS);
   const sectionsList = [];
 
   for (let i = 0; i < sections.length; i++) {
     const sectionMap = new Map();
-    sectionMap['id'] = sections[i].id;
-    sectionMap['value'] = sections[i].querySelector('h2').innerText
+    sectionMap.set('id', sections[i].id);
+    sectionMap.set('value', sections[i].querySelector('h2').innerText)
     sectionsList.push(sectionMap);
   }
 
@@ -57,10 +56,11 @@ function addSectionToNavBar(sectionMap) {
   const newAnchorElement = document.createElement('a');
 
   // creates "<a class="menu__link" href="#sectionN">Section N</a>"
-  newAnchorElement.href = '#' + sectionMap['id'];
-  newAnchorElement.innerText = sectionMap['value'];
+  newAnchorElement.href = '#' + sectionMap.get('id')
+  newAnchorElement.innerText = sectionMap.get('value');
+
+  // append nav element to menu link class
   newAnchorElement.className = MENU_LINK_CLASS;
-  
   newListElement.appendChild(newAnchorElement);
 
   return newListElement;
@@ -99,9 +99,9 @@ function buildTheNav(sections) {
 */
 function makeActive(sections) {
   for (let i = 0; i < sections.length; i++) {
-    // TODO: Seems redundant to query. Investigate fetching section object instead
-    const section = document.querySelector('#' + sections[i].id);
+    const section = document.querySelector('#' + sections[i].get('id'));
     const box = section.getBoundingClientRect();
+    
     // You can play with the values in the "if" condition to further make it more accurate. 
     if (box.top <= 150 && box.bottom >= 150) {
       // Apply active state on the current section and the corresponding Nav link.
@@ -120,10 +120,10 @@ function makeActive(sections) {
 */
 function scrollToSection(navLinks) {
   for (const nav of navLinks) {
+    // override default click function and replace with "smooth" scroll behavior
     nav.addEventListener('click', function (event) {
       event.preventDefault();
-      sectionID = nav.getAttribute("href").slice(1);
-      console.log(sectionID)
+      sectionID = nav.getAttribute("href").slice(1);      
       document.getElementById(sectionID).scrollIntoView({
           behavior: 'smooth'
       });
@@ -138,17 +138,17 @@ function scrollToSection(navLinks) {
  * 
 */
 window.addEventListener('DOMContentLoaded', (event) => {
-  // Build menu
   const sections = getSections();
+  
+  // Build menu
   buildTheNav(sections);
   
   // Scroll to section on link click
   const navLinks = document.querySelectorAll('.' + MENU_LINK_CLASS);
   scrollToSection(navLinks);
-}); 
 
-// Set sections as active
-document.addEventListener("scroll", function() {
-  const sections = getSections();
-  makeActive(sections);
-});
+  // Set sections as active
+  document.addEventListener("scroll", function() {
+    makeActive(sections);
+  });
+}); 
