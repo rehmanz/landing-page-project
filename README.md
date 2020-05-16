@@ -1,4 +1,4 @@
-# [Landing Page Project](https://rehmanz.github.io/udacity-landing-page/)
+# [Landing Page Project](https://rehmanz.github.io/landing-page-project/)
 
 ## Table of Contents
 
